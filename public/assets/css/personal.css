@@ -1,0 +1,15 @@
+.btn-primary{
+    background-color: rgb(19, 19, 19)!important;
+    border-color: #000!important;
+}
+.btn-primary:hover{
+    background-color: orange!important;
+    border-color: #000!important ;
+}
+.panel-border-color-primary {
+    border-top-color: #000!important;
+}
+.titulo1,h3,.h4 ,h4{
+    font-weight: bold!important;
+    text-transform: uppercase;
+}
