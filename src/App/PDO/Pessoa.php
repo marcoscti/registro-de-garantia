@@ -17,6 +17,13 @@ class Pessoa{
         return true;
 
     }
+    public function updateProfile($data){
+
+        $sql ="UPDATE usu SET usu_nome=?,usu_nome2=?,usu_senha=? WHERE usu_id=?";
+        Sql::setData($sql,$data);
+        return true;
+
+    }
     public function getProspects($data){
         $sql = "SELECT * FROM usu WHERE usuNivel_usuNivel_id = ? AND status_status_id = ? ORDER BY usu_dataCad DESC";
         return Sql::findData($sql,$data);
@@ -26,5 +33,13 @@ class Pessoa{
         if(Sql::findData($sql,[$email])){
             return true;
         }
+    }
+    public function findPessoa($data){
+        $sql = "SELECT * FROM usu WHERE usu_email = ?";
+        return Sql::findData($sql,$data);
+    }
+    public function findRevendedor($data){
+        $sql = "SELECT usu_nome FROM usu WHERE usu_id = ?";
+        return Sql::findData($sql,[$data]);
     }
 }

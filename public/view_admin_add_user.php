@@ -13,7 +13,13 @@
                         <label">Nível de acesso *</label>
                           <select name="usuNivel_usuNivel_id" id="usuNivel_usuNivel_id" class="form-control">
                             <option value="0">Selecione uma opção</option>
-                           
+                            <?php
+                              foreach($list as $l):
+                            ?>
+                            <option value="<?=$l['usuNivel_id']?>"><?=$l['usuNivel_desc']?></option>
+                            <?php
+                            endforeach;
+                            ?>
                           </select>
                       </div>
                     </div>

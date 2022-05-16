@@ -38,7 +38,10 @@
                           <td><?=$r['usu_dataCad']?></td>
                           <td><?=$r['usu_nome']?></td>
                           <td><?=$r['usu_email']?></td>
-                          <td><?=$r['usu_rev_id']?></td>
+                          <td>
+                            <?php $revendedor = $pessoa->findRevendedor($r['usu_rev_id'])?>
+                            <?=$revendedor[0]['usu_nome']?>
+                          </td>
                           <td><?=$r['usu_id']?></td>
                         </tr>
                         <?php endforeach;endif;?>
