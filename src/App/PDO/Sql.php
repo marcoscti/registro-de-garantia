@@ -8,7 +8,7 @@ class Sql
     {
         try {
             $stm = Conexao::conectar()->prepare($sql);
-            $stm->execute($dados);
+            return $stm->execute($dados);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

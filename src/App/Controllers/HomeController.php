@@ -20,14 +20,14 @@ class HomeController extends MainController
     public static function insertGarantia($data)
     {
         $pessoa = new Pessoa();
-        $email = $pessoa->verifyEmail($data['usu_email']);
-        print_r($email);
-        die;
-        if ($data['cli_email'] == $email) {
-            return "O email do Cliente já está sendo utilizado";
-        } elseif ($data['rev_email'] == $email) {
-            return "O email do revendedor já está sendo utilizado";
+        $message = [];
+        if ($pessoa->verifyEmail($data['cli_email'])) {
+            array_push($message,"O email do Cliente já está sendo utilizado");
         }
+        if ($pessoa->verifyEmail($data['rev_email'])) {
+            array_push($message,"O email do revendedor já está sendo utilizado");
+        }
+        return json_encode($message);
 
         $revendedor = [
             2,
@@ -60,7 +60,7 @@ class HomeController extends MainController
             $id
         ];
 
-        $pessoa->setCliente($cliente);
+        return $pessoa->setCliente($cliente);
     }
     public static function messageController($message)
     {

@@ -10,7 +10,7 @@ use Slim\Http\Response;
 require_once "./vendor/autoload.php";
 require_once "./env.php";
 
-
+$message = [];
 $app = new \Slim\App();
 
 #Middleware para autenticação
@@ -28,10 +28,10 @@ $mid01 = function($request, $response, $next){
 $app->get('/', HomeController::class . ':home')->setName('home');
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
-    if (HomeController::insertGarantia($data)) {
-        return $response->getBody()->write("Dados Cadastrados com sucesso!");
-    } else {
-        return $response->getBody()->write("Os dados não foram cadastrados!");
+    if(HomeController::insertGarantia($data)){
+        echo HomeController::insertGarantia($data);
+    }else{
+        echo HomeController::insertGarantia($data);
     }
 });
 $app->get('/login', LoginController::class . ':login');
