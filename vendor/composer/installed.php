@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '9bcc5f246a5be2afec7255e3f1ecd6d25aa30132',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '9bcc5f246a5be2afec7255e3f1ecd6d25aa30132',
             'dev_requirement' => false,
         ),
         'nikic/fast-route' => array(
@@ -69,6 +69,15 @@
             'provided' => array(
                 0 => '1.0',
             ),
+        ),
+        'slim/flash' => array(
+            'pretty_version' => '0.4.0',
+            'version' => '0.4.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../slim/flash',
+            'aliases' => array(),
+            'reference' => '9aaff5fded3b54f4e519ec3d4ac74d3d1f2cbbbc',
+            'dev_requirement' => false,
         ),
         'slim/slim' => array(
             'pretty_version' => '3.12.3',
