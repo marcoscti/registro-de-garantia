@@ -5,7 +5,7 @@ use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\LoginController;
 use App\PDO\Estado;
-
+use Slim\Http\Response;
 
 require_once "./vendor/autoload.php";
 require_once "./env.php";
@@ -14,7 +14,8 @@ require_once "./env.php";
 $app = new \Slim\App();
 
 #Middleware para autenticação
-$middlewareLogin = function($request, $response, $next){
+$mid01 = function($request, $response, $next){
+    // $_SESSION['logado'] = true;
     if(isset($_SESSION['logado'])){
         $response = $next($request,$response);
         return $response;
@@ -38,6 +39,8 @@ $app->post('/login',function($request, $response, $args){
     $data = $request->getParsedBody();
     if(AdminController::login($data)){
         return $response->withRedirect('admin');
+    }else{
+        echo "Faça login primeiro";
     }
 });
 $app->get('/forgout', LoginController::class . ':forgout');
@@ -51,15 +54,10 @@ $app->post('/list', function ($request, $response, $args) {
 });
 
 #Rotas para usuários autenticados
-$app->get('/admin', AdminController::class . ':viewAdminDashboard')->add($middlewareLogin);
-$app->get('/listar', AdminController::class . ':getRegistros')->add($middlewareLogin);
-$app->get('/profile', AdminController::class . ':mydata')->add($middlewareLogin);
-$app->post('/profile',function($request, $reponse, $args){
-    $data = $request->getParsedBody();
-    AdminController::updateData($data);
-    echo "Success";
-})->add($middlewareLogin);
-$app->get('/novo', AdminController::class . ':viewAddUser')->add($middlewareLogin);
+$app->get('/admin', AdminController::class . ':viewAdminDashboard')->add($mid01);
+$app->get('/listar', AdminController::class . ':getRegistros')->add($mid01);
+$app->get('/profile', AdminController::class . ':mydata')->add($mid01);
+$app->get('/novo', AdminController::class . ':viewAddUser')->add($mid01);
 $app->get('/logout',function($request, $response, $args){
     session_start();
     session_destroy();
