@@ -26,6 +26,7 @@ $mid01 = function($request, $response, $next){
 
 #Rotas Públicas
 $app->get('/', HomeController::class . ':home')->setName('home');
+
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     if(HomeController::insertGarantia($data)){
@@ -34,7 +35,9 @@ $app->post('/', function ($request, $response, $args) {
         echo HomeController::insertGarantia($data);
     }
 });
+
 $app->get('/login', LoginController::class . ':login');
+
 $app->post('/login',function($request, $response, $args){
     $data = $request->getParsedBody();
     if(AdminController::login($data)){
@@ -55,9 +58,29 @@ $app->post('/list', function ($request, $response, $args) {
 
 #Rotas para usuários autenticados
 $app->get('/admin', AdminController::class . ':viewAdminDashboard')->add($mid01);
+
 $app->get('/listar', AdminController::class . ':getRegistros')->add($mid01);
+
+$app->post('/detalhe', function($request, $response, $args){
+    $id = $request->getParsedBody();
+    AdminController::detail($id['usu_id']);
+})->add($mid01);
+
 $app->get('/profile', AdminController::class . ':mydata')->add($mid01);
+
+$app->post('/profile', function($request, $response, $args){
+    $data = $request->getParsedBody();
+    AdminController::updateData($data);
+    return $response->withRedirect('profile');
+})->add($mid01);
+
 $app->get('/novo', AdminController::class . ':viewAddUser')->add($mid01);
+
+$app->post('/novo', function($request, $response, $args){
+    $data = $request->getParsedBody();
+    AdminController::insertUsuario($data);
+})->add($mid01);
+
 $app->get('/logout',function($request, $response, $args){
     session_start();
     session_destroy();

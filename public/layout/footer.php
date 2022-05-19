@@ -17,6 +17,7 @@
       	//initialize the javascript
       	App.init();
       });
+      $("#formCadGarantia").validate();
     </script>
 
     <!-- MODAL -->

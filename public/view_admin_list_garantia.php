@@ -35,14 +35,19 @@
                           foreach($cliente as $r):
                         ?>
                         <tr>
-                          <td><?=$r['usu_dataCad']?></td>
+                          <td><?=date('d/m/Y',strtotime($r['usu_dataCad']))?></td>
                           <td><?=$r['usu_nome']?></td>
                           <td><?=$r['usu_email']?></td>
                           <td>
                             <?php $revendedor = $pessoa->findRevendedor($r['usu_rev_id'])?>
-                            <?=$revendedor[0]['usu_nome']?>
+                            <?=$revendedor[0]['usu_nome'] ?? ""?>
                           </td>
-                          <td><?=$r['usu_id']?></td>
+                          <td>
+                            <form action="detalhe" method="post">
+                              <input type="hidden" name="usu_id" value="<?=$r['usu_id']?>">
+                              <button class="btn btn-primary">Ver</button>
+                            </form>
+                        </td>
                         </tr>
                         <?php endforeach;endif;?>
                     </tbody>
@@ -53,7 +58,7 @@
           </div>
 
           <!--Busca na base-->
-          <div class="row" style="margin:2% 15%">
+          <!-- <div class="row" style="margin:2% 15%">
             <div class="col-sm-12">
               <div class="panel panel-default panel-table">
                 <form method="POST" action="list-regGarantia-busca?a=buscar" id="formBusca" name="formBusca" onsubmit="return validaBusca(this);">
@@ -64,4 +69,4 @@
                 </form>
               </div>
             </div>
-          </div>
+          </div> -->

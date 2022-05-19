@@ -1,3 +1,4 @@
+<main class="be-splash-screen">
 <div class="be-wrapper be-login">
       <div class="be-content">
         <div class="main-content container-fluid">
@@ -7,10 +8,10 @@
               <div class="panel-body">
                 <form class="content" method="post" enctype="multipart/form-data" name="form_login" id="form_login" onsubmit="return validaLogin(this);">
                   <div class="form-group">
-                    <input id="username" name="username" type="email" placeholder="Seu email" autocomplete="off" class="form-control">
+                    <input id="username" name="username" type="email" placeholder="Seu email" autocomplete="off" class="form-control" required>
                   </div>
                   <div class="form-group">
-                    <input id="password" name="password" type="password" placeholder="Sua senha" class="form-control">
+                    <input id="password" name="password" type="password" placeholder="Sua senha" class="form-control" required>
                   </div>
                   <div class="form-group">
                       <!-- reCaptcha -->
@@ -22,7 +23,7 @@
                     <div class="col-xs-6 login-forgot-password"><a href="forgout">Esqueceu sua senha?</a></div>
                   </div>
                   <div class="form-group login-submit">
-                    <button type="submit" class="btn btn-primary btn-xl" onclick="validaLogin">Continuar</button>
+                    <button type="submit" class="btn btn-primary btn-xl" onclick="validaLogin()">Continuar</button>
                   </div>
                 </form>
               </div>
@@ -32,6 +33,6 @@
         </div>
       </div>
     </div>
-    <script>
-      
-    </script>
+</main>
+
+   

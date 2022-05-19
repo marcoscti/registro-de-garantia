@@ -32,18 +32,29 @@ class AdminController
         $title = "Meus dados";
         $id = $_SESSION['logado']['usu_email'];
         $u = new Pessoa();
-        $user = $u->findPessoa([$id])[0];
+        $user = $u->findPessoa('usu_email',[$id])[0];
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
         include_once "./public/view_admin_my_data.php";
         include_once "./public/layout/footer.php";
     }
+    public static function detail($id)
+    {
+        $title = "Detalhes";
+        $u = new Pessoa();
+        $user = $u->findPessoa('usu_id',[$id])[0];
+        include_once "./public/layout/header.php";
+        include_once "./public/layout/nav_superior.php";
+        include_once "./public/layout/nav_left.php";
+        include_once "./public/view_admin_details.php";
+        include_once "./public/layout/footer.php";
+    }
     public static function getRegistros()
     {
         $title = "Meus dados";
         $pessoa = new Pessoa();
-        $cliente = $pessoa->getProspects([7, 2]);
+        $cliente = $pessoa->getProspects([3, 2]);
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
@@ -54,7 +65,7 @@ class AdminController
     {
         //Aqui vai a lógica do login
         $usuario = new Pessoa();
-        $result = $usuario->findPessoa([$data['username']]);
+        $result = $usuario->findPessoa('usu_email',[$data['username']]);
 
         if (count($result) > 0) {
             if ($result[0]['status_status_id'] != 3 /*3 representa inativo */) {
@@ -81,5 +92,15 @@ class AdminController
         ];
         $pessoa = new Pessoa();
         $pessoa->updateProfile($d);
+    }
+    public static function insertUsuario($data){
+        $usuario = [
+            $data['usuNivel_usuNivel_id'],
+            $data['usu_nome'],
+            $data['usu_nome2'],
+            $data['usu_email']
+        ];
+        $p = new Pessoa();
+        return $p->setUsuario($usuario);
     }
 }

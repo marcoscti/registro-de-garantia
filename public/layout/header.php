@@ -20,5 +20,5 @@
     <script type="text/javascript" src="./public/assets/js/valida_forms.js" charset="utf-8"></script>
     <title><?=$title ?? "Projeto" ?></title>
 </head>
-<body class="be-splash-screen">
+<body>
     

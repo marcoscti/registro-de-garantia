@@ -29,6 +29,14 @@ class Pessoa
         $sql = "INSERT INTO usu (status_status_id, usuNivel_usuNivel_id, cidade_cidade_id, uf_uf_id,usu_nome, usu_nome2, usu_email, usu_cpf, usu_ddd, usu_tel,usu_dataCompra,usu_rev_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         return Sql::setData($sql, $data);
     }
+     /**
+     * Insere um cliente no banco
+     */
+    public function setUsuario($data)
+    {
+        $sql = "INSERT INTO usu (usuNivel_usuNivel_id,usu_nome, usu_nome2, usu_email) VALUES (?,?,?,?)";
+        return Sql::setData($sql, $data);
+    }
     /**
      * Atualiza um perfil de usuário
      */
@@ -38,10 +46,12 @@ class Pessoa
         return Sql::setData($sql, $data);
     }
     /**
-     * Retorna um usuário pelo nível e status passando um array
+     * Retorna um usuário pelo id do nível de acesso e id do status passando um array
      * EX: getProspects([2,7])
+     * @param $data
+     * @return array
      */
-    public function getProspects($data)
+    public function getProspects(array $data)
     {
         $sql = "SELECT * FROM usu WHERE usuNivel_usuNivel_id = ? AND status_status_id = ? ORDER BY usu_dataCad DESC";
         return Sql::findData($sql, $data);
@@ -62,12 +72,15 @@ class Pessoa
         return false;
     }
     /**
-     * Busca o Usuário de acordo com um email passado dentro de um array 
-     * Exemplo: findPessoa(['email@email.com'])
+     * Busca o Usuário de acordo com uma coluna específica, passe o 2º argumento como um array 
+     * Exemplo: findPessoa('field',['email@email.com'])
+     * @param string $field
+     * @param array $data
+     * @return array
      */
-    public function findPessoa($data)
+    public function findPessoa($field,$data)
     {
-        $sql = "SELECT * FROM usu WHERE usu_email = ?";
+        $sql = "SELECT * FROM usu WHERE $field = ?";
         return Sql::findData($sql, $data);
     }
     /**
