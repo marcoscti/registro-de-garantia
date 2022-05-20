@@ -1,7 +1,12 @@
 # O que Falta para concluir o projeto?
-
-- [ ] Configurar as flash messages
+- [x] Criação das classes principais
+- [x] Configuração da sessão
+- [x] Autenticação
+- [x] Adição de usuário
+- [x] Listagem de usuários
+- [x] Atualização cadastral
+- [ ] Configurar as flash messages (Mensagens de Retorno)
 - [ ] Configurar Upload das imagens
-- [ ] Ajustar CSS do Admin
+- [x] Ajustar CSS do Admin
 - [ ] Configurar o envio de E-mail
-- [ ] Conferir algumas Validações
+- [ ] Conferir Validações nos controladores
