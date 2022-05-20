@@ -54,7 +54,7 @@ class AdminController
     {
         $title = "Meus dados";
         $pessoa = new Pessoa();
-        $cliente = $pessoa->getProspects([3, 2]);
+        $cliente = $pessoa->getProspects([2, 2]);
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
