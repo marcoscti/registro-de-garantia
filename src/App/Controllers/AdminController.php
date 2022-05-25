@@ -66,19 +66,19 @@ class AdminController
         //Aqui vai a lógica do login
         $usuario = new Pessoa();
         $result = $usuario->findPessoa('usu_email',[$data['username']]);
-
+        
         if (count($result) > 0) {
             if ($result[0]['status_status_id'] != 3 /*3 representa inativo */) {
                 if ($result[0]['usu_senha'] === $data['password']) {
                     return $_SESSION['logado'] = $result[0];
                 } else {
-                    echo "E-mail ou senha inválidos tente novamente";
+                    return $_SESSION['message']= "E-mail ou senha inválidos tente novamente";
                 }
             } else {
-                echo "Usuário está inativo, consulte o administrador";
+                return $_SESSION['message']="Usuário está inativo, consulte o administrador";
             }
         } else {
-            echo "Cadastro não localizado!";
+            return $_SESSION['message']="Cadastro não localizado!";
         }
     }
     public static function updateData($data)

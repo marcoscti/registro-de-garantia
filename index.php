@@ -25,15 +25,12 @@ $mid01 = function ($request, $response, $next) {
 };
 
 #Rotas Públicas
-$app->get('/', HomeController::class . ':home')->setName('home');
+$app->get('/', HomeController::class . ':home');
 
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
-    if (HomeController::insertGarantia($data)) {
-        echo HomeController::insertGarantia($data);
-    } else {
-        echo HomeController::insertGarantia($data);
-    }
+    HomeController::insertGarantia($data);
+    return $response->withRedirect('/');
 });
 
 $app->get('/login', LoginController::class . ':login');
@@ -42,8 +39,6 @@ $app->post('/login', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     if (AdminController::login($data)) {
         return $response->withRedirect('admin');
-    } else {
-        echo "Faça login primeiro";
     }
 });
 $app->get('/forgout', LoginController::class . ':forgout');

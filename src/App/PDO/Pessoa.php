@@ -12,8 +12,9 @@ class Pessoa
 {
     /**
      * Insere um usuário com perfil de revendedor na base e retorna o ID gerado
+     * status_status_id, usuNivel_usuNivel_id, cidade_cidade_id, uf_uf_id,usu_nome, usu_nome2, usu_email, usu_cpf, usu_ddd, usu_tel, usu_refRel, usu_numNf
      */
-    public function setRevendedor($data)
+    public function setRevendedor(array $data)
     {
         $sql = "INSERT INTO usu (status_status_id, usuNivel_usuNivel_id, cidade_cidade_id, uf_uf_id,usu_nome, usu_nome2, usu_email, usu_cpf, usu_ddd, usu_tel, usu_refRel, usu_numNf) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         Sql::setData($sql, $data);

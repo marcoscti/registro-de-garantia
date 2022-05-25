@@ -16,7 +16,7 @@
                         <p><?=$message['body'] ?? "Seu registro de garantia foi realizado com sucesso."?></p>
                       </div>
                     </div>
-                    <div class="modal-footer"></div>                    
+                    <div class="modal-footer"><a href="<?=$message['route']?>">Tentar novamente</a></div>                    
                   </div>
                 </div>  
             </div>

@@ -6,7 +6,7 @@
         <div class="panel panel-default panel-border-color panel-border-color-primary">
           <div class="modal-header"></div>
           <div class="text-center">
-            <img src="./public/assets/img/logos-sirius/logo-xx.png" alt="logo" width="204" height="37" class="logo-img">
+            <img src="./public/assets/img/logos-sirius/logo-xx.png" alt="logo" width="204" class="logo-img">
             <h3 class="titulo1">Registre a garantia do seu cliente</h3>
             <p>
               É importante que você revendedor(a), preencha corretamente todos os dados solicitados abaixo, assim seu cliente terá direito à garantia (dentro do prazo estabelecido) do produto em qualquer lugar do Brasil.
@@ -17,6 +17,14 @@
               * Data da compra: data que você revendedor(a) vendeu o relógio para seu cliente. <br>
               * Número da Nota Fiscal: número da nota fiscal, que você revendedor (a) comprou o respectivo relógio no site Sempre Seculus.
             </p>
+            <?php
+              if (isset($_SESSION['message'])) :
+              ?>
+                <p class="alert alert-danger" id="message">
+                  <?= $_SESSION['message'];
+                  unset($_SESSION['message']) ?>
+                </p>
+              <?php endif; ?>
           </div>
           <div class="panel-body">
             <form class="content" action="" method="post" enctype="multipart/form-data" name="formCadGarantia" id="formCadGarantia" onsubmit="return validaCadGarantia(this);">

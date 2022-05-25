@@ -5,7 +5,7 @@
 - [x] Adição de usuário
 - [x] Listagem de usuários
 - [x] Atualização cadastral
-- [ ] Configurar as flash messages (Mensagens de Retorno)
+- [x] Configurar as Mensagens de Retorno
 - [ ] Configurar Upload das imagens
 - [x] Ajustar CSS do Admin
 - [ ] Configurar o envio de E-mail

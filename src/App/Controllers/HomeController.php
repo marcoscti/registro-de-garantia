@@ -17,18 +17,17 @@ class HomeController extends MainController
         include "./public/view_insert_garantia.php";
         include "./public/layout/footer.php";
     }
-    public static function insertGarantia($data)
+    public static function insertGarantia(array $data)
     {
         $pessoa = new Pessoa();
-        $message = [];
+        
         if ($pessoa->verifyEmail($data['cli_email'])) {
-            array_push($message,"O email do Cliente já está sendo utilizado");
+            return  $_SESSION['message']="O email do Cliente já está sendo utilizado";
         }
         if ($pessoa->verifyEmail($data['rev_email'])) {
-            array_push($message,"O email do revendedor já está sendo utilizado");
+            return  $_SESSION['message']="O email do revendedor já está sendo utilizado";
         }
-        return json_encode($message);
-
+        
         $revendedor = [
             2,
             3,
@@ -45,6 +44,7 @@ class HomeController extends MainController
         ];
 
         $id = $pessoa->setRevendedor($revendedor);
+        
         $cliente = [
             2, //status
             7, //usunivel [Pessoa física]
@@ -60,9 +60,21 @@ class HomeController extends MainController
             $id
         ];
 
-        return $pessoa->setCliente($cliente);
+        if($pessoa->setCliente($cliente)){
+            return  $_SESSION['message']= "Dados Registrados com sucesso!";
+        }else{
+            return  $_SESSION['message']= $pessoa->setCliente($cliente);
+        }
     }
-    public static function messageController($message)
+    /**
+     * Campos obrigatórios do array:
+     * $message = [
+     *  'title'=> "Seu título",
+     *  'body'=> "Conteúdo",
+     *  'route'=> "Rota de retorno"
+     * ];
+     */
+    public static function messageController(array $message)
     {
         $title = "Mensagem";
         include "./public/layout/header.php";
