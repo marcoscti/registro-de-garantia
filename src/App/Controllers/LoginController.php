@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\Controllers\MainController;
 
-class LoginController extends MainController{
+final class LoginController {
     public static function login(){
         $title = "Faça Login";
         include "./public/layout/header.php";

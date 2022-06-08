@@ -5,7 +5,6 @@ use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\LoginController;
 use App\PDO\Estado;
-use Slim\Http\Response;
 
 require_once "./vendor/autoload.php";
 require_once "./env.php";
@@ -57,7 +56,6 @@ $app->get('/admin', AdminController::class . ':viewAdminDashboard')->add($mid01)
 $app->get('/listar', AdminController::class . ':getRegistros')->add($mid01);
 
 $app->post('/detalhe', function ($request, $response, $args) {
-
     $id = $request->getParsedBody();
     AdminController::detail($id['usu_id']);
 })->add($mid01);

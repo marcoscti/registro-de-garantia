@@ -4,7 +4,7 @@ function getValue(valor,id_css){
      console.log(valor) 	
      setTimeout(function(){
      $(id_css).load("./index.php/list",{key:valor})
-   }, 500)
+   }, 50)
 }
 
 /* CONVERTER DADOS DO INPUT PARA MAIUSCULA */

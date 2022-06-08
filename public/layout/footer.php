@@ -5,7 +5,8 @@
     <script src="./public/assets/lib/jquery.niftymodals/dist/jquery.niftymodals.js" type="text/javascript"></script>
     <script src="./public/assets/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="./public/assets/js/additional-methods.min.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="./public/assets/js/ajaxCidade.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./public/assets/js/valida_forms.js" charset="utf-8"></script>
     <script type="text/javascript">
       $.fn.niftyModal('setDefaults',{
         overlaySelector: '.modal-overlay',

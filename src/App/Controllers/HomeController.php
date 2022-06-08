@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\PDO\Estado;
 use App\PDO\Pessoa;
 
-class HomeController extends MainController
+final class HomeController
 {
     public static function home()
     {
@@ -22,10 +22,10 @@ class HomeController extends MainController
         $pessoa = new Pessoa();
         
         if ($pessoa->verifyEmail($data['cli_email'])) {
-            return  $_SESSION['message']="O email do Cliente já está sendo utilizado";
+            return  $_SESSION['message'] ="O email do Cliente já está sendo utilizado";
         }
         if ($pessoa->verifyEmail($data['rev_email'])) {
-            return  $_SESSION['message']="O email do revendedor já está sendo utilizado";
+            return  $_SESSION['message'] ="O email do revendedor já está sendo utilizado";
         }
         
         $revendedor = [
@@ -42,7 +42,9 @@ class HomeController extends MainController
             $data['rev_refRel'],
             $data['rev_numNf']
         ];
-
+        /**
+         * o sistema deverá inserir o revendedor e enviar um email para ele com a senha, para que ele possa cadastrar mais clientes
+         */
         $id = $pessoa->setRevendedor($revendedor);
         
         $cliente = [
@@ -61,24 +63,9 @@ class HomeController extends MainController
         ];
 
         if($pessoa->setCliente($cliente)){
-            return  $_SESSION['message']= "Dados Registrados com sucesso!";
+            return  $_SESSION['message']= "Registro de garantia realizado com sucesso!";
         }else{
             return  $_SESSION['message']= $pessoa->setCliente($cliente);
         }
-    }
-    /**
-     * Campos obrigatórios do array:
-     * $message = [
-     *  'title'=> "Seu título",
-     *  'body'=> "Conteúdo",
-     *  'route'=> "Rota de retorno"
-     * ];
-     */
-    public static function messageController(array $message)
-    {
-        $title = "Mensagem";
-        include "./public/layout/header.php";
-        include "./public/view_message.php";
-        include "./public/layout/footer.php";
     }
 }

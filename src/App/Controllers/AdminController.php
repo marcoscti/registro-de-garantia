@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\PDO\Nivel;
 use App\PDO\Pessoa;
 
-class AdminController
+final class AdminController
 {
     public static function viewAdminDashboard()
     {
@@ -16,6 +16,7 @@ class AdminController
         include_once "./public/view_admin_dashboard.php";
         include_once "./public/layout/footer.php";
     }
+
     public static function viewAddUser()
     {
         $nivel = new Nivel();
@@ -27,6 +28,7 @@ class AdminController
         include_once "./public/view_admin_add_user.php";
         include_once "./public/layout/footer.php";
     }
+
     public static function mydata()
     {
         $title = "Meus dados";
@@ -39,6 +41,7 @@ class AdminController
         include_once "./public/view_admin_my_data.php";
         include_once "./public/layout/footer.php";
     }
+
     public static function detail($id)
     {
         $title = "Detalhes";
@@ -50,6 +53,7 @@ class AdminController
         include_once "./public/view_admin_details.php";
         include_once "./public/layout/footer.php";
     }
+
     public static function getRegistros()
     {
         $title = "Meus dados";
@@ -61,6 +65,7 @@ class AdminController
         include_once "./public/view_admin_list_garantia.php";
         include_once "./public/layout/footer.php";
     }
+
     public static function login($data)
     {
         //Aqui vai a lógica do login
@@ -75,12 +80,13 @@ class AdminController
                     return $_SESSION['message']= "E-mail ou senha inválidos tente novamente";
                 }
             } else {
-                return $_SESSION['message']="Usuário está inativo, consulte o administrador";
+                return $_SESSION['message']="Seu acesso está bloqueado, contate o administrador";
             }
         } else {
             return $_SESSION['message']="Cadastro não localizado!";
         }
     }
+
     public static function updateData($data)
     {
 
@@ -93,6 +99,7 @@ class AdminController
         $pessoa = new Pessoa();
         $pessoa->updateProfile($d);
     }
+    
     public static function insertUsuario($data){
         $usuario = [
             $data['usuNivel_usuNivel_id'],
