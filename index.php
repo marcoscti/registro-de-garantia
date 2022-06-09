@@ -2,7 +2,7 @@
 session_start();
 
 use App\Controllers\AdminController;
-use App\Controllers\HomeController;
+use App\Controllers\MainController;
 use App\Controllers\LoginController;
 use App\PDO\Estado;
 
@@ -24,12 +24,12 @@ $mid01 = function ($request, $response, $next) {
 };
 
 #Rotas Públicas
-$app->get('/', HomeController::class . ':home');
+$app->get('/', MainController::class . ':home');
 
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
-    HomeController::insertGarantia($data);
-    return $response->withRedirect('/');
+    $upload = $request->getUploadedFiles();
+    MainController::insertGarantia($data,$upload);
 });
 
 $app->get('/login', LoginController::class . ':login');

@@ -9,18 +9,16 @@ use App\PDO\Sql;
  * @autor: marcoscti
  */
 /**
- * INSERT INTO `usu`(`usu_id`, `status_id`, `usu_nivel_id`, `cidade_id`, `uf_id`, `usu_created_at`, `usu_nome`, `usu_sobrenome`, `usu_email`, `usu_cpf`, `usu_ddd`, `usu_telefone`, `usu_data_nascimento`, `usu_senha`, `usu_endereco`, `usu_numero`, `usu_complemento`, `usu_bairro`, `usu_cep`, `usu_cidade`, `usu_uf`, `usu_obs`, `usu_ref_relogio`, `usu_num_nota_fiscal`, `usu_data_compra`, `upload_anexo`, `usu_rev_id`, `usu_updated_at`) 
- */
+         * INSERT INTO `usu`(`usu_id`, `status_id`, `usu_nivel_id`, `cidade_id`, `uf_id`, `usu_created_at`, `usu_nome`, `usu_sobrenome`, `usu_email`, `usu_cpf`, `usu_ddd`, `usu_telefone`, `usu_data_nascimento`, `usu_senha`, `usu_endereco`, `usu_numero`, `usu_complemento`, `usu_bairro`, `usu_cep`, `usu_cidade`, `usu_uf`, `usu_obs`, `usu_ref_relogio`, `usu_num_nota_fiscal`, `usu_data_compra`, `upload_anexo`, `usu_rev_id`, `usu_updated_at`) 
+         */
 final class Pessoa
 {
     /**
      * Insere um usuário com perfil de revendedor na base e retorna o ID gerado
-     * status_status_id, usuNivel_usuNivel_id, cidade_cidade_id, uf_uf_id,usu_nome, usu_nome2, usu_email, usu_cpf, usu_ddd, usu_tel, usu_refRel, usu_numNf
      */
     public function setRevendedor(array $data)
     {
         $sql = "INSERT INTO usu (
-            status_id,
             usu_nivel_id,
             cidade_id,
             uf_id,
@@ -31,7 +29,7 @@ final class Pessoa
             usu_cpf,
             usu_ddd,
             usu_telefone)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            VALUES (?,?,?,?,?,?,?,?,?,?)";
         Sql::setData($sql, $data);
         $result = Conexao::conectar()->lastInsertId();
         return $result;
@@ -41,8 +39,19 @@ final class Pessoa
      */
     public function setCliente($data)
     {
-
-        $sql = "INSERT INTO usu (status_status_id, usuNivel_usuNivel_id, cidade_cidade_id, uf_uf_id,usu_nome, usu_nome2, usu_email, usu_cpf, usu_ddd, usu_tel,usu_dataCompra,usu_rev_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        
+        $sql = "INSERT INTO usu (
+            usu_nivel_id,
+            cidade_cidade_id,
+            uf_uf_id,usu_nome,
+            usu_sobrenome,
+            usu_email,
+            usu_cpf,
+            usu_ddd,
+            usu_telefone,
+            usu_data_compra,
+            upload_anexo,
+            usu_rev_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         return Sql::setData($sql, $data);
     }
     /**

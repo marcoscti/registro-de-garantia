@@ -26,7 +26,7 @@
 
         <!-- DADOS Revendedor -->
         <div class="panel panel-border-color panel-body">
-          <form class="content" action="" method="post" enctype="multipart/form-data" name="formCadGarantia" id="formCadGarantia">
+          <form class="content" method="post" enctype="multipart/form-data">
             <h3 class="titulo2 text-center">revendedor(a) Informe seus dados pessoais</h3>
             <div class="row">
               <div class="col-sm-4">
@@ -37,8 +37,8 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="rev_nome2">Sobrenome</label>
-                  <input autocomplete="off" id="rev_nome2" name="rev_nome2" type="text" maxlength="100" placeholder="Sobrenome" class="form-control">
+                  <label for="rev_sobrenome">Sobrenome</label>
+                  <input autocomplete="off" id="rev_sobrenome" name="rev_sobrenome" type="text" maxlength="100" placeholder="Sobrenome" class="form-control">
                 </div>
               </div>
 
@@ -59,20 +59,18 @@
                 <div class="form-group">
                   <label for="rev_uf">Seu Estado</label>
                   <select name="rev_uf" id="rev_uf" class="form-control" onchange="getValue(this.value, '#rev_cidade')">
-
-                    <option value="" disabled selected>Selecione o seu estado</option>
-                    <?php foreach ($buscaEstado2 as $estado) : ?>
+                    <option value="">Selecione o seu estado</option>
+                    <?php foreach ($buscaA as $estado) : ?>
                       <option value="<?= $estado['uf_id'] ?>"><?= $estado['uf_nome'] ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
-
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
                   <label for="rev_cidade">Sua Cidade</label>
                   <select name="rev_cidade" id="rev_cidade" class="form-control">
-                    <option value="0" disabled selected>Informe a cidade</option>
+                    <option value="">Informe a cidade</option>
                   </select>
                 </div>
               </div>
@@ -103,8 +101,8 @@
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="cli_nome2">Sobrenome</label>
-                <input autocomplete="off" id="cli_nome2" name="cli_nome2" type="text" maxlength="100" placeholder="Sobrenome" class="form-control">
+                <label for="cli_sobrenome">Sobrenome</label>
+                <input autocomplete="off" id="cli_sobrenome" name="cli_sobrenome" type="text" maxlength="100" placeholder="Sobrenome" class="form-control">
               </div>
             </div>
           </div>
@@ -127,9 +125,9 @@
               <div class="form-group">
                 <label for="cli_uf">Estado do Cliente</label>
                 <select name="cli_uf" id="cli_uf" class="form-control" onchange="getValue(this.value,'#cli_cidade')">
-                  <option value="" disabled selected>Selecione o estado do Cliente</option>
+                  <option value="">Selecione o estado do Cliente</option>
                   <?php
-                  foreach ($buscaEstado as $estado) : ?>
+                  foreach ($buscaB as $estado) : ?>
                     <option value="<?= $estado['uf_id'] ?>"><?= $estado['uf_nome'] ?></option>
                   <?php endforeach; ?>
                 </select>
@@ -139,7 +137,7 @@
               <div class="form-group">
                 <label for="cli_cidade">Cidade do Cliente</label>
                 <select name="cli_cidade" id="cli_cidade" class="form-control">
-                  <option value="0" disabled selected>Informe a cidade do cliente</option>
+                  <option value="">Informe a cidade do cliente</option>
                 </select>
               </div>
             </div>
@@ -154,7 +152,7 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="cli_foto_nf">Foto da nota fiscal</label>
-                <input type="file" name="foto_nf" id="cli_foto_nf" title="Clique para anexar uma imagem da nota fiscal" class="form-control">
+                <input type="file" name="cli_foto_nf" id="cli_foto_nf" title="Clique para anexar uma imagem da nota fiscal" class="form-control">
               </div>
             </div>
           </div>
@@ -180,14 +178,14 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="cli_numNf">Nº da Nota Fiscal</label>
-                    <input autocomplete="off" type="number" name="cli_numNf" id="cli_numNf" placeholder="EX: 0540..." class="form-control" maxlength="15">
+                    <label for="cli_num_nf">Nº da Nota Fiscal</label>
+                    <input autocomplete="off" type="number" name="cli_num_nf" id="cli_num_nf" placeholder="EX: 0540..." class="form-control" maxlength="15">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label for="cli_refRel">Referência Relógio</label>
-                    <input oninput="handleInput(event)" autocomplete="off" type="text" name="cli_refRel" id="cli_refRel" placeholder="EX: 01XBC2" class="form-control" maxlength="20">
+                    <label for="cli_ref_rel">Referência Relógio</label>
+                    <input oninput="handleInput(event)" autocomplete="off" type="text" name="cli_ref_rel" id="cli_ref_rel" placeholder="EX: 01XBC2" class="form-control" maxlength="20">
                   </div>
                 </div>
               </div>
