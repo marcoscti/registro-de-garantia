@@ -4,7 +4,7 @@
       <div class="main-content container-fluid">
         <div class="splash-container">
           <div class="panel panel-default panel-border-color panel-border-color-primary">
-            <div class="panel-heading"><img src="./public/assets/img/logos-sirius/logo-xx.png" alt="logo" width="204" height="37" class="logo-img"><span class="splash-description">Identifique-se para continuar.</span>
+            <div class="panel-heading"><img src="./public/assets/img/logos-sirius/logo_seculus.jpg" alt="logo" width="120" class="logo-img"><span class="splash-description">Identifique-se para continuar.</span>
               <?php
               if (isset($_SESSION['message'])) :
               ?>

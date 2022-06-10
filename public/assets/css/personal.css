@@ -3,7 +3,7 @@
     border-color: #000!important;
 }
 .btn-primary:hover{
-    background-color: orange!important;
+    background-color: #e30512!important;
     border-color: #000!important ;
 }
 .panel-border-color-primary {
@@ -12,4 +12,10 @@
 .titulo1,h3,.h4 ,h4{
     font-weight: bold!important;
     text-transform: uppercase;
+    color: black;
+}
+.titulo2{
+    font-weight: bold!important;
+    text-transform: uppercase;
+    color: black;
 }

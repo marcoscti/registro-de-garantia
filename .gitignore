@@ -1,3 +1,3 @@
-src/App/Resources/SendMail.php
+src/App/Resources/EnviaEmail.php
 env.php
 test.php

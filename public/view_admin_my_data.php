@@ -20,7 +20,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Sobrenome *</label>
-                        <input autocomplete="off" type="text" name="usu_nome2" id="usu_nome2" placeholder="" class="form-control" maxlength="100" value="<?=$user['usu_nome2']?>">
+                        <input autocomplete="off" type="text" name="usu_sobrenome" id="usu_sobrenome" placeholder="" class="form-control" maxlength="100" value="<?=$user['usu_sobrenome']?>">
                       </div>
                     </div>
                     <div class="col-sm-8">

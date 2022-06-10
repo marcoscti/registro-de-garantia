@@ -40,7 +40,12 @@ $app->post('/login', function ($request, $response, $args) {
         return $response->withRedirect('admin');
     }
 });
-$app->get('/forgout', LoginController::class . ':forgout');
+$app->get('/forgout', LoginController::class . ':forgoutView');
+$app->post('/forgout', function ($request, $response, $args) {
+    $data = $request->getParsedBody();
+    LoginController::forgout($data);
+    return $response->withRedirect('login');
+});
 //A Função Abaixo serve para trazer as cidades para preencher o select da view insert garantia
 $app->post('/list', function ($request, $response, $args) {
     $data = $request->getParsedBody();

@@ -72,14 +72,16 @@ final class Pessoa
         return Sql::setData($sql, $data);
     }
     /**
-     * Retorna um usuário pelo id do nível de acesso e id do status passando os argumentos dentro de um array
-     * EX: getProspects([2,7])
+     * Retorna um usuário pelo usu_nivel_id,usu_status_id,usu_rev_id passando os argumentos dentro de um array
      * @param $data
      * @return array
      */
-    public function getProspects(array $data)
+    public function getList(array $data)
     {
-        $sql = "SELECT * FROM tb_person WHERE usu_nivel_id = ? AND status_id = ? ORDER BY usu_created_at DESC";
+        $sql = "SELECT * FROM tb_person 
+        INNER JOIN tb_city ON tb_city.id_city = tb_person.usu_cidade_id
+        INNER JOIN tb_uf ON tb_uf.uf_id = tb_person.usu_uf_id
+        WHERE usu_nivel_id = ? AND usu_status_id = ? AND usu_rev_id =?";
         return Sql::findData($sql, $data);
     }
     /**
@@ -103,7 +105,10 @@ final class Pessoa
      */
     public function findPessoa($field, $data)
     {
-        $sql = "SELECT * FROM tb_person WHERE $field = ?";
+        $sql = "SELECT * FROM tb_person 
+        INNER JOIN tb_city ON tb_city.id_city = tb_person.usu_cidade_id
+        INNER JOIN tb_uf ON tb_uf.uf_id = tb_person.usu_uf_id
+        WHERE $field = ?";
         return Sql::findData($sql, $data);
     }
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\PDO\Estado;
 use App\PDO\Nivel;
 use App\PDO\Pessoa;
 
@@ -56,9 +57,11 @@ final class AdminController
 
     public static function getRegistros()
     {
+        
         $title = "Meus dados";
         $pessoa = new Pessoa();
-        $cliente = $pessoa->getProspects([2, 2]);
+        $id = $_SESSION['logado']['usu_id'];
+        $cliente = $pessoa->getList([3,1,$id]);
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";

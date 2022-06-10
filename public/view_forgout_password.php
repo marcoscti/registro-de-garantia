@@ -4,12 +4,20 @@
       <div class="main-content container-fluid">
         <div class="splash-container forgot-password">
           <div class="panel panel-default panel-border-color panel-border-color-primary">
-            <div class="panel-heading"><img src="./public/assets/img/logos-sirius/logo-xx.png" alt="logo" width="204" height="37" class="logo-img"><span class="splash-description">Esqueceu sua senha?</span></div>
+            <div class="panel-heading"><img src="./public/assets/img/logos-sirius/logo_seculus.jpg" alt="logo" width="120" class="logo-img"><span class="splash-description">Esqueceu sua senha?</span></div>
             <div class="panel-body">
-              <form action="" method="post" enctype="multipart/form-data" name="form_recuperaSenha" id="form_recuperaSenha" onsubmit="return validaRecuperaSenha(this);">
+            <?php
+              if (isset($_SESSION['message'])) :
+              ?>
+                <p class="alert alert-danger" id="message">
+                  <?= $_SESSION['message'];
+                  unset($_SESSION['message']) ?>
+                </p>
+              <?php endif; ?>
+              <form action="" method="post">
                 <p>Não se preocupe que lhe enviaremos novamente</p>
                 <div class="form-group xs-pt-20">
-                  <input type="email" name="email" required placeholder="Digite seu email" autocomplete="off" class="form-control">
+                  <input type="email" name="email" required placeholder="Digite seu email" autocomplete="on" class="form-control">
                 </div>
                 <div class="form-group">
                   <!-- <div class="g-recaptcha" data-sitekey="6Lfm7PwUAAAAAG4yp1UQrqkgFwWD4kAT6tftPWm7"></div> -->

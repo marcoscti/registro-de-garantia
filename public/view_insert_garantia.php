@@ -3,7 +3,10 @@
     <div class="be-content">
       <div class="container">
         <div class="panel panel-body ">
-          <h3 class="titulo1 text-center">Registro de garantia</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-left:20px;padding-right:20px;">
+        <img src="./public/assets/img/logos-sirius/logo_seculus.jpg" alt="logo_seculus" height="50">
+        <h1 class="titulo1 text-center">Registro de garantia</h1>  
+      </div>
         </div>
         <!-- <p>
               É importante que você revendedor(a), preencha corretamente todos os dados solicitados abaixo, assim seu cliente terá direito à garantia (dentro do prazo estabelecido) do produto em qualquer lugar do Brasil.

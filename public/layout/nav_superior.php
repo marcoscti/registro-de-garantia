@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top be-top-header">
   <div class="container-fluid">
-    <div class="navbar-header"><a href="admin" class="navbar-brand"></a></div>
+    <div class="navbar-header"><a href="admin"><img src="./public/assets/img/logos-sirius/logo_seculus.jpg" alt="logo" width="100" style="margin:5px;"></a></div>
     <div class="be-right-navbar">
       <ul class="nav navbar-nav navbar-right be-user-nav">
         <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle"><img src="./public/assets/img/avatar.png" alt="Avatar"><span class="user-name">Olá, @Usuário</span></a>

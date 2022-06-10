@@ -11,7 +11,7 @@
             </div>
            </div>       
           <div class="row">
-          	<form action="" method="post" enctype="multipart/form-data" name="formAlteraProspect" id="formAlteraProspect" onsubmit="return validaAlteraProspect(this);">  
+          	<form action="" method="post">  
             <div class="col-sm-8">
               <div class="panel panel-default panel-border-color panel-border-color-primary">
                 <div class="panel-heading panel-heading-divider">Dados do usuário<span class="panel-subtitle">Informações cadastrais</span></div>
@@ -25,7 +25,7 @@
                     <div class="col-sm-8">
                       <div class="form-group">
                         <label>Sobrenome</label>
-                        <input readonly="" autocomplete="off" type="text" name="usu_nome2" id="usu_nome2" value="<?=$user['usu_nome2']?>" class="form-control" maxlength="100">
+                        <input readonly="" autocomplete="off" type="text" name="usu_sobrenome" id="usu_sobrenome" value="<?=$user['usu_sobrenome']?>" class="form-control" maxlength="100">
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -55,13 +55,13 @@
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label>Cidade</label>
-                        <input readonly="" autocomplete="off" type="text" name="usu_cidade" id="usu_cidade" value="<?=$user['usu_cidade']?>" class="form-control" maxlength="100">
+                        <input readonly="" autocomplete="off" type="text" name="usu_cidade" id="usu_cidade" value="<?=$user['cidade_nome']?>" class="form-control" maxlength="100">
                       </div>
                     </div>  
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>UF</label>
-                        <input readonly="" autocomplete="off" type="text" name="usu_uf" id="usu_uf" value="<?=$user['usu_uf']?>" class="form-control" maxlength="2">
+                        <input readonly="" autocomplete="off" type="text" name="usu_uf" id="usu_uf" value="<?=$user['uf_sigla']?>" class="form-control" maxlength="2">
                       </div>
                     </div>                 
                 </div>
@@ -75,25 +75,25 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <label>Nº da nota fiscal</label>
-                        <input readonly="" autocomplete="off" type="text" name="usu_numNf" id="usu_numNf" value="<?=$user['usu_numNf']?>" class="form-control" maxlength="70">
+                        <input readonly="" autocomplete="off" type="text" name="usu_numNf" id="usu_numNf" value="<?=$user['usu_num_nota_fiscal']?>" class="form-control" maxlength="70">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                       <label>Data da compra</label>
-                        <input readonly="" autocomplete="off" type="text" name="usu_dataCompra" id="usu_dataCompra" value="<?=date('d/m/Y',strtotime($user['usu_dataCompra']))?>" class="form-control" maxlength="70">
+                        <input readonly="" autocomplete="off" type="text" name="usu_data_compra" id="usu_data_compra" value="<?=date('d/m/Y',strtotime($user['usu_data_compra']))?>" class="form-control" maxlength="70">
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group">
                       <label>Referência do relógio</label>
-                        <input readonly="" autocomplete="off" type="text" name="usu_refRel" id="usu_refRel" value="<?=$user['usu_refRel']?>" class="form-control" maxlength="70">
+                        <input readonly="" autocomplete="off" type="text" name="usu_ref_relogio" id="usu_ref_relogio" value="<?=$user['usu_ref_relogio']?>" class="form-control" maxlength="70">
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group">
                         <div class="icon-container">
-                          <a target="_blank" href="#"><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
+                          <a><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
                         </div>
                       </div>
                     </div>

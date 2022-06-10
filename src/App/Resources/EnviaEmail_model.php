@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-class SendMail
+class EnviaEmail
 {
   public static function sendEmail($remetente,$para, $assunto,$mensagem )
   {
@@ -18,14 +18,15 @@ class SendMail
       $mail->isSMTP();
       $mail->isHTML(true);
       $mail->CharSet = 'UTF-8';
-      $mail->Host = 'smtp.office365.com';
+      $mail->Host = 'smtp.example.com';
       $mail->Port = 587;
       $mail->SMTPAuth = true;
-      $mail->Username = 'marcosc974@outlook.com';
-      $mail->Password = '@NONYMOU5';
+      $mail->Username = 'example@email.com';
+      $mail->Password = '******';
       $mail->setFrom($mail->Username,$remetente ?? "Seculus");
       $mail->SMTPSecure = 'STARTTLS';
-                  
+      $mail->addEmbeddedImage('url', 'logo');
+
       $mail->Subject = $assunto;
       $mail->Body = $mensagem;
       $mail->addAddress($para);

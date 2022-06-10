@@ -11,12 +11,12 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <label">Nível de acesso *</label>
-                      <select name="usuNivel_usuNivel_id" id="usuNivel_usuNivel_id" class="form-control" required>
+                      <select name="usu_nivel_id" id="usu_nivel_id" class="form-control" required>
                         <option value="0" disabled selected>Selecione uma opção</option>
                         <?php
                         foreach ($list as $l) :
                         ?>
-                          <option value="<?= $l['usuNivel_id'] ?>"><?= $l['usuNivel_desc'] ?></option>
+                          <option value="<?= $l['usu_nivel_id'] ?>"><?= $l['usu_nivel_desc'] ?></option>
                         <?php
                         endforeach;
                         ?>
