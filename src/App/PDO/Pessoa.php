@@ -8,9 +8,7 @@ use App\PDO\Sql;
  * @class: Pessoa
  * @autor: marcoscti
  */
-/**
-         * INSERT INTO `usu`(`usu_id`, `status_id`, `usu_nivel_id`, `cidade_id`, `uf_id`, `usu_created_at`, `usu_nome`, `usu_sobrenome`, `usu_email`, `usu_cpf`, `usu_ddd`, `usu_telefone`, `usu_data_nascimento`, `usu_senha`, `usu_endereco`, `usu_numero`, `usu_complemento`, `usu_bairro`, `usu_cep`, `usu_cidade`, `usu_uf`, `usu_obs`, `usu_ref_relogio`, `usu_num_nota_fiscal`, `usu_data_compra`, `upload_anexo`, `usu_rev_id`, `usu_updated_at`) 
-         */
+
 final class Pessoa
 {
     /**
@@ -42,8 +40,9 @@ final class Pessoa
         
         $sql = "INSERT INTO usu (
             usu_nivel_id,
-            cidade_cidade_id,
-            uf_uf_id,usu_nome,
+            cidade_id,
+            uf_id,
+            usu_nome,
             usu_sobrenome,
             usu_email,
             usu_cpf,
@@ -51,7 +50,9 @@ final class Pessoa
             usu_telefone,
             usu_data_compra,
             upload_anexo,
-            usu_rev_id) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            usu_num_nota_fiscal,
+            usu_ref_relogio,
+            usu_rev_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         return Sql::setData($sql, $data);
     }
     /**

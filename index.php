@@ -28,15 +28,16 @@ $app->get('/', MainController::class . ':home');
 
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
-    $upload = $request->getUploadedFiles();
-    MainController::insertGarantia($data,$upload);
+    // print_r(json_encode($data));
+    MainController::insertGarantia($data);
+    return $response->withRedirect('/');
 });
 
-$app->get('/login', LoginController::class . ':login');
+$app->get('/login', LoginController::class . ':viewLogin');
 
 $app->post('/login', function ($request, $response, $args) {
     $data = $request->getParsedBody();
-    if (AdminController::login($data)) {
+    if (LoginController::login($data)) {
         return $response->withRedirect('admin');
     }
 });
@@ -46,7 +47,7 @@ $app->post('/list', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     $e = new Estado();
     foreach ($e->getCidades($data['key']) as $c) {
-        echo "<option " . $c['cidade_id'] . ">" . $c['cidade_nome'] . "</option>";
+        echo "<option value='" . $c['cidade_id'] . "'>" . $c['cidade_nome'] . "</option>";
     }
 });
 

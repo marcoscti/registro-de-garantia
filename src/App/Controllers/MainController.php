@@ -17,7 +17,7 @@ final class MainController
         include "./public/view_insert_garantia.php";
         include "./public/layout/footer.php";
     }
-    public static function insertGarantia(array $data, array $upload)
+    public static function insertGarantia(array $data)
     {
         $pessoa = new Pessoa();
 
@@ -27,7 +27,7 @@ final class MainController
         if (!$pessoa->verifyEmail($data['rev_email'])) {
             //Dados do revendedor
             $revendedor = [
-                3, //Nível de Acesso: Revendedor
+                2, //Nível de Acesso: Revendedor
                 $data['rev_cidade'], //Cidade
                 $data['rev_uf'], //Estado
                 $data['rev_nome'], //Nome
@@ -44,16 +44,19 @@ final class MainController
             
             //Dados do Cliente
             $cliente = [
-                7, //Nivel de Acesso: Cliente
+                3, //Nivel de Acesso: Cliente
                 $data['cli_cidade'], //Cidade Cliente
                 $data['cli_uf'], //Estado Cliente
                 $data['cli_nome'], //Nome Cliente
-                $data['cli_nome2'], //Sobrenome Cliente
+                $data['cli_sobrenome'], //Sobrenome Cliente
                 $data['cli_email'], //Email Cliente
                 $data['cli_cpf'], //CPF Cliente
                 $data['cli_ddd'], //DDD Cliente
                 $data['cli_tel'], //Telefone Cliente
-                $data['cli_dataCompra'],
+                $data['cli_data_compra'],
+                $foto ?? "padrao.jpg",
+                $data['cli_num_nf'],
+                $data['cli_ref_rel'],
                 $id
             ];
 
@@ -63,7 +66,10 @@ final class MainController
                 return  $_SESSION['message'] = $pessoa->setCliente($cliente);
             }
         } else {
-            return  $_SESSION['message'] = "Revendedor, o seu email já está sendo utilizado, utilize a opção de login para registrar uma nova garantia";
+            return  $_SESSION['message'] = [
+                'class'=>'danger',
+                'text'=>"Revendedor, o seu email já está sendo utilizado, utilize a opção de login para registrar uma nova garantia"
+            ];
         }
     }
 }
