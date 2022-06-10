@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\PDO\Estado;
 use App\PDO\Pessoa;
+use App\Resources\SendMail;
 
 final class MainController
 {
@@ -41,7 +42,12 @@ final class MainController
 
             # O sistema deverá inserir o revendedor e enviar um email para ele com a senha, para que ele possa cadastrar mais clientes
             $id = $pessoa->setRevendedor($revendedor);
-
+            $mensagem = "Olá, <strong>".$data['rev_nome']."</strong> Seja bem vindo ao serviço de registro de garantia, Segue abaixo os seus dados de acesso
+            <br>
+            <strong>Login: </strong>".$data['rev_email']."<br>
+            <strong>Senha: </strong>".$data['rev_cpf']."
+            ";
+            SendMail::sendEmail('',$data['rev_email'],'Registro de Garantia',$mensagem);
             //Dados do Cliente
             $cliente = [
                 3, //Nivel de Acesso: Cliente
