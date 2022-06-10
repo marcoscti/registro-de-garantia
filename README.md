@@ -11,8 +11,8 @@
 - [x] Configurar o envio de E-mail
 - [x] Conferir Validações nos controladores
 ## Funções do Administrador
--[ ] Manter Revendedor
--[ ] Manter Cliente
+- [ ] Manter Revendedor
+- [ ] Manter Cliente
 ## Funções do Revendedor
--[ ] Manter Cliente
+- [ ] Manter Cliente
 ## Funções do Cliente
