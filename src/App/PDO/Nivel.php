@@ -3,7 +3,7 @@ namespace App\PDO;
 
 class Nivel{
     public function getList(){
-        $sql = "SELECT usuNivel_id,usuNivel_desc FROM usuNivel";
+        $sql = "SELECT usu_nivel_id,usu_nivel_desc FROM tb_usu_nivel";
         $result = Sql::getList($sql);
         return $result;
     }

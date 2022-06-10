@@ -17,8 +17,8 @@
         <?php
         if (isset($_SESSION['message'])) :
         ?>
-          <p class="alert alert-<?=$_SESSION['message']?>" id="message">
-            <?= $_SESSION['message'];
+          <p class="alert alert-<?=$_SESSION['message']['class']?>" id="message">
+            <?= $_SESSION['message']['text'];
             unset($_SESSION['message']) ?>
           </p>
         <?php endif; ?>

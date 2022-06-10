@@ -15,9 +15,9 @@
               <?php endif; ?>
             </div>
             <div class="panel-body">
-              <form class="content" method="post" enctype="multipart/form-data" name="form_login" id="form_login" onsubmit="return validaLogin(this);">
+              <form class="content" method="post">
                 <div class="form-group">
-                  <input id="username" name="username" type="email" placeholder="Seu email" autocomplete="off" class="form-control" required>
+                  <input id="username" name="email" type="email" placeholder="Seu email" autocomplete="on" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <input id="password" name="password" type="password" placeholder="Sua senha" class="form-control" required>

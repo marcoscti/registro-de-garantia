@@ -16,17 +16,17 @@ final class Pessoa
      */
     public function setRevendedor(array $data)
     {
-        $sql = "INSERT INTO usu (
+        $sql = "INSERT INTO tb_person (
             usu_nivel_id,
-            cidade_id,
-            uf_id,
+            usu_cidade_id,
+            usu_uf_id,
             usu_nome,
             usu_sobrenome,
             usu_email,
             usu_senha,
             usu_cpf,
             usu_ddd,
-            usu_telefone)
+            usu_tel)
             VALUES (?,?,?,?,?,?,?,?,?,?)";
         Sql::setData($sql, $data);
         $result = Conexao::conectar()->lastInsertId();
@@ -38,16 +38,16 @@ final class Pessoa
     public function setCliente($data)
     {
         
-        $sql = "INSERT INTO usu (
+        $sql = "INSERT INTO tb_person (
             usu_nivel_id,
-            cidade_id,
-            uf_id,
+            usu_cidade_id,
+            usu_uf_id,
             usu_nome,
             usu_sobrenome,
             usu_email,
             usu_cpf,
             usu_ddd,
-            usu_telefone,
+            usu_tel,
             usu_data_compra,
             upload_anexo,
             usu_num_nota_fiscal,
@@ -60,7 +60,7 @@ final class Pessoa
      */
     public function setUsuario($data)
     {
-        $sql = "INSERT INTO usu (usuNivel_usuNivel_id,usu_nome, usu_nome2, usu_email) VALUES (?,?,?,?)";
+        $sql = "";
         return Sql::setData($sql, $data);
     }
     /**
@@ -68,18 +68,18 @@ final class Pessoa
      */
     public function updateProfile($data)
     {
-        $sql = "UPDATE usu SET usu_nome=?,usu_nome2=?,usu_senha=? WHERE usu_id=?";
+        $sql = "";
         return Sql::setData($sql, $data);
     }
     /**
-     * Retorna um usuário pelo id do nível de acesso e id do status passando um array
+     * Retorna um usuário pelo id do nível de acesso e id do status passando os argumentos dentro de um array
      * EX: getProspects([2,7])
      * @param $data
      * @return array
      */
     public function getProspects(array $data)
     {
-        $sql = "SELECT * FROM usu WHERE usuNivel_usuNivel_id = ? AND status_status_id = ? ORDER BY usu_dataCad DESC";
+        $sql = "SELECT * FROM tb_person WHERE usu_nivel_id = ? AND status_id = ? ORDER BY usu_created_at DESC";
         return Sql::findData($sql, $data);
     }
     /**
@@ -89,7 +89,7 @@ final class Pessoa
      */
     public function verifyEmail(string $email)
     {
-        $sql = "SELECT usu_email FROM usu WHERE usu_email=?";
+        $sql = "SELECT usu_email FROM tb_person WHERE usu_email=?";
         $res = Sql::findData($sql, [$email]);
 
         if (count($res) > 0) {
@@ -98,15 +98,12 @@ final class Pessoa
         return false;
     }
     /**
-     * Busca o Usuário de acordo com uma coluna específica, passe o 2º argumento como um array 
+     * Busca o Usuário de acordo com uma coluna específica, passe o 2º argumento dentro de um array 
      * Exemplo: findPessoa('field',['email@email.com'])
-     * @param string $field
-     * @param array $data
-     * @return array
      */
     public function findPessoa($field, $data)
     {
-        $sql = "SELECT * FROM usu WHERE $field = ?";
+        $sql = "SELECT * FROM tb_person WHERE $field = ?";
         return Sql::findData($sql, $data);
     }
     /**
@@ -115,7 +112,7 @@ final class Pessoa
      */
     public function findRevendedor($data)
     {
-        $sql = "SELECT usu_nome FROM usu WHERE usu_id = ?";
+        $sql = "SELECT usu_nome FROM tb_person WHERE usu_id = ?";
         return Sql::findData($sql, [$data]);
     }
 }

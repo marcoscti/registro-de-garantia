@@ -18,13 +18,13 @@ class SendMail
       $mail->isSMTP();
       $mail->isHTML(true);
       $mail->CharSet = 'UTF-8';
-      $mail->Host = 'smtp.office365.com';
+      $mail->Host = 'smtp.example.com';
       $mail->Port = 587;
       $mail->SMTPAuth = true;
-      $mail->Username = 'marcosc974@outlook.com';
-      $mail->Password = '@NONYMOU5';
-      $mail->setFrom($mail->Username,$remetente ?? "Seculus");
-      $mail->SMTPSecure = 'STARTTLS';
+      $mail->Username = 'example@email.com';
+      $mail->Password = '******';
+      $mail->setFrom($mail->Username,$remetente ?? "Remetente Name");
+      $mail->SMTPSecure = 'TLS';
                   
       $mail->Subject = $assunto;
       $mail->Body = $mensagem;

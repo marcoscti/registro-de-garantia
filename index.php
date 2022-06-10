@@ -28,7 +28,6 @@ $app->get('/', MainController::class . ':home');
 
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
-    // print_r(json_encode($data));
     MainController::insertGarantia($data);
     return $response->withRedirect('/');
 });
@@ -42,12 +41,12 @@ $app->post('/login', function ($request, $response, $args) {
     }
 });
 $app->get('/forgout', LoginController::class . ':forgout');
-//A Função Abaixo serve para trazer as cidades para preencher o select do insert-garantia
+//A Função Abaixo serve para trazer as cidades para preencher o select da view insert garantia
 $app->post('/list', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     $e = new Estado();
     foreach ($e->getCidades($data['key']) as $c) {
-        echo "<option value='" . $c['cidade_id'] . "'>" . $c['cidade_nome'] . "</option>";
+        echo "<option value='" . $c['id_city'] . "'>" . $c['cidade_nome'] . "</option>";
     }
 });
 

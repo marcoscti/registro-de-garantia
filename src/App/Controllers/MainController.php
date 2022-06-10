@@ -41,7 +41,7 @@ final class MainController
 
             # O sistema deverá inserir o revendedor e enviar um email para ele com a senha, para que ele possa cadastrar mais clientes
             $id = $pessoa->setRevendedor($revendedor);
-            
+
             //Dados do Cliente
             $cliente = [
                 3, //Nivel de Acesso: Cliente
@@ -61,14 +61,20 @@ final class MainController
             ];
 
             if ($pessoa->setCliente($cliente)) {
-                return  $_SESSION['message'] = "Registro de garantia realizado com sucesso!";
+                return  $_SESSION['message'] = [
+                    'class' => 'success',
+                    'text' => 'Registro de garantia realizado com sucesso!'
+                ];
             } else {
-                return  $_SESSION['message'] = $pessoa->setCliente($cliente);
+                return  $_SESSION['message'] = [
+                    'class' => 'warning',
+                    'text' => $pessoa->setCliente($cliente)
+                ];
             }
         } else {
             return  $_SESSION['message'] = [
-                'class'=>'danger',
-                'text'=>"Revendedor, o seu email já está sendo utilizado, utilize a opção de login para registrar uma nova garantia"
+                'class' => 'danger',
+                'text' => "Revendedor, o seu email já está sendo utilizado,<br> Utilize a opção de login para registrar uma nova garantia"
             ];
         }
     }

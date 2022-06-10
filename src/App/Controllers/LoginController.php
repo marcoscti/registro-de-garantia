@@ -20,12 +20,12 @@ final class LoginController {
     {
         //Aqui vai a lógica do login
         $usuario = new Pessoa();
-        $result = $usuario->findPessoa('usu_email',[$data['username']]);
+        $result = $usuario->findPessoa('usu_email',[$data['email']]);
         
         if (count($result) > 0) {
 
             // verifica se o status do usuário é igual a 2 no bd, 2 representa bloqueado
-            if ($result[0]['status_id'] != 2) {
+            if ($result[0]['usu_status_id'] == 1) {
                 if ($result[0]['usu_senha'] === $data['password']) {
                     return $_SESSION['logado'] = $result[0];
                 } else {
@@ -35,7 +35,7 @@ final class LoginController {
                 return $_SESSION['message']="Seu acesso está bloqueado, contate o administrador";
             }
         } else {
-            return $_SESSION['message']="Cadastro não localizado!";
+            return $_SESSION['message']= "Cadastro não localizado!";
         }
     }
 }
