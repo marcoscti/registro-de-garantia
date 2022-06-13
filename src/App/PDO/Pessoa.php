@@ -68,7 +68,7 @@ final class Pessoa
      */
     public function updateProfile($data)
     {
-        $sql = "";
+        $sql = "UPDATE tb_person SET usu_nome =?, usu_sobrenome=?, usu_senha=?, usu_updated_at= ? WHERE usu_id=?";
         return Sql::setData($sql, $data);
     }
     /**
@@ -119,5 +119,16 @@ final class Pessoa
     {
         $sql = "SELECT usu_nome FROM tb_person WHERE usu_id = ?";
         return Sql::findData($sql, [$data]);
+    }
+
+    public function getRegistro($data){
+
+        $sql = "SELECT * FROM tb_person
+        INNER JOIN tb_city ON tb_city.id_city = tb_person.usu_cidade_id
+        INNER JOIN tb_uf ON tb_uf.uf_id = tb_person.usu_uf_id
+        WHERE tb_person.usu_cpf = ?";
+
+        return Sql::findData($sql,[$data]);
+
     }
 }

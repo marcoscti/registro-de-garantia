@@ -93,7 +93,13 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <div class="icon-container">
-                          <a><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
+                          <?php
+                            if(isset($user['upload_anexo'])):
+                          ?>
+                            <a href="uploads/<?=$user['upload_anexo']?>" target="_blank"><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
+                          <?php else:?>
+                            <a href="#"><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
+                          <?php endif;?>
                         </div>
                       </div>
                     </div>

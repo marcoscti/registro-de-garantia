@@ -39,7 +39,7 @@
                       <div class="col-sm-12">
                         <p class="text-right">
                         <input type="hidden" name="usu_id" value="<?=$user['usu_id']?>"> 
-                          <button type="submit" class="btn btn-space btn-primary" onclick="return updateUsuCad()">ATUALIZAR</button>
+                          <button type="submit" class="btn btn-space btn-primary">ATUALIZAR</button>
                         </p>
                       </div>
                     </div> 

@@ -6,13 +6,14 @@
 - [x] Listagem de usuários
 - [x] Atualização cadastral
 - [x] Configurar as Mensagens de Retorno
-- [ ] Configurar Upload das imagens
+- [X] Configurar Upload das imagens
 - [x] Ajustar CSS do Admin
 - [x] Configurar o envio de E-mail
 - [x] Conferir Validações nos controladores
+- [x] Gerar PDF dos registros
 ## Funções do Administrador
 - [ ] Manter Revendedor
-- [ ] Manter Cliente
+- [x] Manter Registro
 ## Funções do Revendedor
-- [ ] Manter Cliente
+- [x] Manter Registro
 ## Funções do Cliente

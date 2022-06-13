@@ -73,19 +73,34 @@ final class AdminController
 
         $d = [
             $data['usu_nome'],
-            $data['usu_nome2'],
+            $data['usu_sobrenome'],
             $data['usu_senha'],
+            date("Y-m-d H:i:s", time()),
             $data['usu_id']
         ];
         $pessoa = new Pessoa();
         $pessoa->updateProfile($d);
     }
-    
+    public static function viewInsertGarantia(){
+       
+        $e = new Estado();
+        $buscaA = $e->getEstados();
+        $buscaB = $buscaA;
+        $title = "Nova Garantia";
+        include_once "./public/layout/header.php";
+        include_once "./public/layout/nav_superior.php";
+        include_once "./public/layout/nav_left.php";
+        include_once "./public/view_admin_insert_garantia.php";
+        include_once "./public/layout/footer.php";
+    }
+    public static function viewRegistro(){
+        
+    }
     public static function insertUsuario($data){
         $usuario = [
             $data['usuNivel_usuNivel_id'],
             $data['usu_nome'],
-            $data['usu_nome2'],
+            $data['usu_sobrenome'],
             $data['usu_email']
         ];
         $p = new Pessoa();

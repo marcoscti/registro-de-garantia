@@ -19,7 +19,7 @@ final class MainController
         include "./public/view_insert_garantia.php";
         include "./public/layout/footer.php";
     }
-    public static function insertGarantia(array $data)
+    public static function insertGarantia(array $data, string $nomeImagem)
     {
         $pessoa = new Pessoa();
 
@@ -56,7 +56,7 @@ final class MainController
                 $data['cli_ddd'], //DDD Cliente
                 $data['cli_tel'], //Telefone Cliente
                 $data['cli_data_compra'],
-                $foto ?? "padrao.jpg",
+                $nomeImagem ?? "padrao.jpg",
                 $data['cli_num_nf'],
                 $data['cli_ref_rel'],
                 $id
@@ -78,6 +78,40 @@ final class MainController
             return  $_SESSION['message'] = [
                 'class' => 'danger',
                 'text' => "Revendedor, o seu email já está sendo utilizado,<br> Utilize a opção de login para registrar uma nova garantia"
+            ];
+        }
+    }
+
+    public static function adminInsertGarantia(array $data,string $nomeImagem){
+        $pessoa = new Pessoa();
+        //Dados do Cliente
+        $cliente = [
+            3, //Nivel de Acesso: Cliente
+            $data['cli_cidade'], //Cidade Cliente
+            $data['cli_uf'], //Estado Cliente
+            $data['cli_nome'], //Nome Cliente
+            $data['cli_sobrenome'], //Sobrenome Cliente
+            $data['cli_email'], //Email Cliente
+            $data['cli_cpf'], //CPF Cliente
+            $data['cli_ddd'], //DDD Cliente
+            $data['cli_tel'], //Telefone Cliente
+            $data['cli_data_compra'],
+            $nomeImagem,
+            $data['cli_num_nf'],
+            $data['cli_ref_rel'],
+            $data['rev_id']
+        ];
+
+        if ($pessoa->setCliente($cliente)) {
+            
+            return  $_SESSION['message'] = [
+                'class' => 'success',
+                'text' => 'Registro de garantia realizado com sucesso!'
+            ];
+        } else {
+            return  $_SESSION['message'] = [
+                'class' => 'warning',
+                'text' => $pessoa->setCliente($cliente)
             ];
         }
     }

@@ -197,7 +197,7 @@
         </div>
         <!-- End data Revendedor -->
         <div class="panel panel-footer">
-         <button type="submit" class="btn btn-primary btn-xl form-control">IMPRIMIR</button>
+         <button type="submit" class="btn btn-primary btn-xl form-control">GERAR REGISTRO</button>
         </div>
       </div>
       </form>

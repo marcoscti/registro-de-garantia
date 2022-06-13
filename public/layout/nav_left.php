@@ -10,8 +10,8 @@
                         <li class="divider">Gestão de informações</a>
                         <li class="parent"><a href=""><i class="icon mdi mdi-folder-star"></i><span>Registros de garantia</span></a>
                             <ul class="sub-menu">
-                                <li><a href="novo"><i class="icon mdi mdi-folder-star"></i> Novo Registro</a></li>
-                                <li><a href="listar"> <i class="icon mdi mdi-folder-star"></i> Listar Registros</a></li>
+                                <li><a href="garantia"><i class="icon mdi mdi-folder-star"></i> Novo</a></li>
+                                <li><a href="listar"> <i class="icon mdi mdi-folder-star"></i> Listar</a></li>
                             </ul>
                         </li>
                         <?php if ($_SESSION['logado']['usu_nivel_id'] == 1) : ?>

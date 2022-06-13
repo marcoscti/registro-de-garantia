@@ -13,8 +13,10 @@ class ComposerStaticInita7dbb2d46a362df4353db4d3a0a8d2cc
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Svg\\' => 4,
             'Slim\\Flash\\' => 11,
             'Slim\\' => 5,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
@@ -24,7 +26,12 @@ class ComposerStaticInita7dbb2d46a362df4353db4d3a0a8d2cc
         ),
         'F' => 
         array (
+            'FontLib\\' => 8,
             'FastRoute\\' => 10,
+        ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
         ),
         'A' => 
         array (
@@ -33,6 +40,10 @@ class ComposerStaticInita7dbb2d46a362df4353db4d3a0a8d2cc
     );
 
     public static $prefixDirsPsr4 = array (
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
         'Slim\\Flash\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/flash/src',
@@ -40,6 +51,10 @@ class ComposerStaticInita7dbb2d46a362df4353db4d3a0a8d2cc
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -53,9 +68,17 @@ class ComposerStaticInita7dbb2d46a362df4353db4d3a0a8d2cc
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'App\\' => 
         array (
@@ -75,6 +98,12 @@ class ComposerStaticInita7dbb2d46a362df4353db4d3a0a8d2cc
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
+        'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
+        'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
+        'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
+        'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
+        'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

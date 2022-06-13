@@ -8,7 +8,7 @@
         <div class="col-sm-12">
           <div class="panel panel-default panel-table">
             <div style='padding-bottom: 25px' class="panel-heading">Total de registros no sistema: <?= count($cliente) ?> <div class="tools">
-                <a target="_blank" href="export-regGarantia" title="Exportar CSV"><span class="icon mdi mdi-download"></span></a><a target="_blank" href="export-prospect" title="Exportar CSV"><span class="icon mdi mdi-more-vert"></span></a>
+                <!-- <a target="_blank" href="export-regGarantia" title="Exportar CSV"><span class="icon mdi mdi-download"></span></a><a target="_blank" href="export-prospect" title="Exportar CSV"><span class="icon mdi mdi-more-vert"></span></a> -->
               </div>
             </div>
           </div>
@@ -24,21 +24,20 @@
                   <tr>
                     <th>Data</th>
                     <th>Nome</th>
-                    <th>Email</th>
-                    <th>Visualizar</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                  
+
                   if (count($cliente) > 0) :
                     foreach ($cliente as $r) :
                   ?>
                       <tr>
                         <td><?= date('d/m/Y', strtotime($r['usu_created_at'])) ?></td>
                         <td><?= $r['usu_nome'] ?></td>
-                        <td><?= $r['usu_email'] ?></td>
                         <td>
+                          <a href="registro/<?= $r['usu_cpf'] ?>" class="btn btn-success">Salvar</a>
                           <form action="detalhe" method="post">
                             <input type="hidden" name="usu_id" value="<?= $r['usu_id'] ?>">
                             <button class="btn btn-primary">Ver</button>
