@@ -39,16 +39,17 @@ $app->post('/', function ($request, $response, $args) {
     $imagem = $files['cli_foto_nf'];
     $nomeImagem = "";
     if ($imagem->getError() === UPLOAD_ERR_OK) {
-        $nomeImagem = $imagem->getClientFilename();
+        $nomeImagem = date("dmYHms") . str_replace(' ', '', $imagem->getClientFilename());
         $imagem->moveTo('uploads/' . $nomeImagem);
     }
     MainController::insertGarantia($data, $nomeImagem);
     return $response->withRedirect('/');
 });
+
 $app->get('/registro/{cpf}', function ($req, $res, $args) {
     $pdf = new GeraPdf();
     $p = new Pessoa();
-    
+
     $data = $p->getRegistro($args['cpf'])[0];
     $options = new Options();
     $options->set('defaultFont', 'Arial');
@@ -60,6 +61,7 @@ $app->get('/registro/{cpf}', function ($req, $res, $args) {
     $dompdf->render();
     $dompdf->stream($data['usu_nome'] . ".pdf");
 });
+
 $app->get('/login', LoginController::class . ':viewLogin');
 
 $app->post('/login', function ($request, $response, $args) {
@@ -68,12 +70,15 @@ $app->post('/login', function ($request, $response, $args) {
         return $response->withRedirect('admin');
     }
 });
+
 $app->get('/forgout', LoginController::class . ':forgoutView');
+
 $app->post('/forgout', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     LoginController::forgout($data);
     return $response->withRedirect('login');
 });
+
 //A Função Abaixo serve para trazer as cidades para preencher o select da view insert garantia
 $app->post('/list', function ($request, $response, $args) {
     $data = $request->getParsedBody();
@@ -112,7 +117,8 @@ $app->post('/garantia', function ($request, $response, $args) {
     $imagem = $files['cli_foto_nf'];
     $nomeImagem = "";
     if ($imagem->getError() === UPLOAD_ERR_OK) {
-        $nomeImagem = $imagem->getClientFilename();
+        $nomeImagem = date("dmYHms") . str_replace(' ', '', $imagem->getClientFilename());
+
         $imagem->moveTo('uploads/' . $nomeImagem);
     }
 

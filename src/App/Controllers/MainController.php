@@ -82,36 +82,44 @@ final class MainController
         }
     }
 
-    public static function adminInsertGarantia(array $data,string $nomeImagem){
+    public static function adminInsertGarantia(array $data, string $nomeImagem)
+    {
         $pessoa = new Pessoa();
-        //Dados do Cliente
-        $cliente = [
-            3, //Nivel de Acesso: Cliente
-            $data['cli_cidade'], //Cidade Cliente
-            $data['cli_uf'], //Estado Cliente
-            $data['cli_nome'], //Nome Cliente
-            $data['cli_sobrenome'], //Sobrenome Cliente
-            $data['cli_email'], //Email Cliente
-            $data['cli_cpf'], //CPF Cliente
-            $data['cli_ddd'], //DDD Cliente
-            $data['cli_tel'], //Telefone Cliente
-            $data['cli_data_compra'],
-            $nomeImagem,
-            $data['cli_num_nf'],
-            $data['cli_ref_rel'],
-            $data['rev_id']
-        ];
 
-        if ($pessoa->setCliente($cliente)) {
-            
-            return  $_SESSION['message'] = [
-                'class' => 'success',
-                'text' => 'Registro de garantia realizado com sucesso!'
+        if (!$pessoa->verifyEmail($data['cli_email'])) {
+            //Dados do Cliente
+            $cliente = [
+                3, //Nivel de Acesso: Cliente
+                $data['cli_cidade'], //Cidade Cliente
+                $data['cli_uf'], //Estado Cliente
+                $data['cli_nome'], //Nome Cliente
+                $data['cli_sobrenome'], //Sobrenome Cliente
+                $data['cli_email'], //Email Cliente
+                $data['cli_cpf'], //CPF Cliente
+                $data['cli_ddd'], //DDD Cliente
+                $data['cli_tel'], //Telefone Cliente
+                $data['cli_data_compra'],
+                $nomeImagem,
+                $data['cli_num_nf'],
+                $data['cli_ref_rel'],
+                $data['rev_id']
             ];
+
+            if ($pessoa->setCliente($cliente)) {
+                return  $_SESSION['message'] = [
+                    'class' => 'success',
+                    'text' => 'Registro de garantia realizado com sucesso!'
+                ];
+            } else {
+                return  $_SESSION['message'] = [
+                    'class' => 'warning',
+                    'text' => $pessoa->setCliente($cliente)
+                ];
+            }
         } else {
             return  $_SESSION['message'] = [
-                'class' => 'warning',
-                'text' => $pessoa->setCliente($cliente)
+                'class' => 'danger',
+                'text' => "Erro: O email do cliente já está sendo utilizado!"
             ];
         }
     }

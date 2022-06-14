@@ -98,7 +98,7 @@
                           ?>
                             <a href="uploads/<?=$user['upload_anexo']?>" target="_blank"><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
                           <?php else:?>
-                            <a href="#"><div class="icon"><span class="mdi mdi-attachment-alt"></span></div><span class="icon-class">Anexo da nota fiscal</span></a>
+                            Sem nota anexada
                           <?php endif;?>
                         </div>
                       </div>

@@ -8,12 +8,12 @@ use PHPMailer\PHPMailer\Exception;
 
 class EnviaEmail
 {
-  public static function sendEmail($remetente,$para, $assunto,$mensagem )
+  public static function sendEmail($remetente, $para, $assunto, $mensagem)
   {
 
     $mail = new PHPMailer(true);
     try {
-      
+
       // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
       $mail->isSMTP();
       $mail->isHTML(true);
@@ -23,7 +23,7 @@ class EnviaEmail
       $mail->SMTPAuth = true;
       $mail->Username = 'example@email.com';
       $mail->Password = '******';
-      $mail->setFrom($mail->Username,$remetente ?? "Seculus");
+      $mail->setFrom($mail->Username, $remetente ?? "Seculus");
       $mail->SMTPSecure = 'STARTTLS';
       $mail->addEmbeddedImage('url', 'logo');
 

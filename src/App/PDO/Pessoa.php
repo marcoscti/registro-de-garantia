@@ -37,7 +37,7 @@ final class Pessoa
      */
     public function setCliente($data)
     {
-        
+
         $sql = "INSERT INTO tb_person (
             usu_nivel_id,
             usu_cidade_id,
@@ -121,14 +121,14 @@ final class Pessoa
         return Sql::findData($sql, [$data]);
     }
 
-    public function getRegistro($data){
+    public function getRegistro($data)
+    {
 
         $sql = "SELECT * FROM tb_person
         INNER JOIN tb_city ON tb_city.id_city = tb_person.usu_cidade_id
         INNER JOIN tb_uf ON tb_uf.uf_id = tb_person.usu_uf_id
         WHERE tb_person.usu_cpf = ?";
 
-        return Sql::findData($sql,[$data]);
-
+        return Sql::findData($sql, [$data]);
     }
 }

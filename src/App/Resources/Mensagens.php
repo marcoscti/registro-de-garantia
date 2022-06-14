@@ -43,11 +43,11 @@ class Mensagens
                 <img src='cid:logo' alt='Logo' width='150' style='margin:0 auto;'>
             </div>
             <h2 style='text-align:center;text-transform:uppercase;'>SUA SENHA DE ACESSO</h2>
-        <p>Olá <strong>".$data['nome']."</strong>, Essa é a sua senha do portal, não esqueça que ela é intransferível.</p>
+        <p>Olá <strong>" . $data['nome'] . "</strong>, Essa é a sua senha do portal, não esqueça que ela é intransferível.</p>
         <p style='font-size:16px;'>
-            <strong>Login: </strong>".$data['email']."
+            <strong>Login: </strong>" . $data['email'] . "
             <br>
-            <strong>Senha: </strong> ".$data['senha']."
+            <strong>Senha: </strong> " . $data['senha'] . "
         </p>
         <div style='margin:50px;'></div>
         <p style='text-align:center; font-size: 11px;'>

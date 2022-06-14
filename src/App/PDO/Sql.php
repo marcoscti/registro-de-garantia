@@ -1,5 +1,7 @@
 <?php
+
 namespace App\PDO;
+
 use App\PDO\Conexao;
 
 class Sql

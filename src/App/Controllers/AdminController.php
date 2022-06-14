@@ -35,7 +35,7 @@ final class AdminController
         $title = "Meus dados";
         $id = $_SESSION['logado']['usu_email'];
         $u = new Pessoa();
-        $user = $u->findPessoa('usu_email',[$id])[0];
+        $user = $u->findPessoa('usu_email', [$id])[0];
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
@@ -47,7 +47,7 @@ final class AdminController
     {
         $title = "Detalhes";
         $u = new Pessoa();
-        $user = $u->findPessoa('usu_id',[$id])[0];
+        $user = $u->findPessoa('usu_id', [$id])[0];
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
@@ -57,11 +57,11 @@ final class AdminController
 
     public static function getRegistros()
     {
-        
+
         $title = "Meus dados";
         $pessoa = new Pessoa();
         $id = $_SESSION['logado']['usu_id'];
-        $cliente = $pessoa->getList([3,1,$id]);
+        $cliente = $pessoa->getList([3, 1, $id]);
         include_once "./public/layout/header.php";
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
@@ -81,8 +81,9 @@ final class AdminController
         $pessoa = new Pessoa();
         $pessoa->updateProfile($d);
     }
-    public static function viewInsertGarantia(){
-       
+    public static function viewInsertGarantia()
+    {
+
         $e = new Estado();
         $buscaA = $e->getEstados();
         $buscaB = $buscaA;
@@ -93,10 +94,11 @@ final class AdminController
         include_once "./public/view_admin_insert_garantia.php";
         include_once "./public/layout/footer.php";
     }
-    public static function viewRegistro(){
-        
+    public static function viewRegistro()
+    {
     }
-    public static function insertUsuario($data){
+    public static function insertUsuario($data)
+    {
         $usuario = [
             $data['usuNivel_usuNivel_id'],
             $data['usu_nome'],
