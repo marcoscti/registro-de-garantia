@@ -17,9 +17,8 @@
                         <?php if ($_SESSION['logado']['usu_nivel_id'] == 1) : ?>
                             <li class="parent"><a href="novo"><i class="icon mdi mdi-accounts"></i><span>Gerenciar usuários</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="#">Novo</a></li>
-                                    <li><a href="#">Listar Revendedores</a></li>
-                                    <li><a href="#">Listar Clientes</a></li>
+                                    <li><a href="novo-usuario">Novo</a></li>
+                                    <li><a href="list-all-users">Listar</a></li>
                                 </ul>
                             </li>
                         <?php endif; ?>

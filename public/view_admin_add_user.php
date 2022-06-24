@@ -15,9 +15,11 @@
                         <option value="0" disabled selected>Selecione uma opção</option>
                         <?php
                         foreach ($list as $l) :
+                          if($l['usu_nivel_desc'] != 'Cliente'):
                         ?>
                           <option value="<?= $l['usu_nivel_id'] ?>"><?= $l['usu_nivel_desc'] ?></option>
                         <?php
+                        endif;
                         endforeach;
                         ?>
                       </select>
@@ -32,13 +34,19 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Sobrenome *</label>
-                    <input autocomplete="off" type="text" name="usu_nome2" id="usu_nome2" placeholder="" class="form-control" maxlength="100">
+                    <input autocomplete="off" type="text" name="usu_sobrenome" id="usu_sobrenome" placeholder="" class="form-control" maxlength="100">
                   </div>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label>Email *</label>
                     <input autocomplete="off" type="email" name="usu_email" id="usu_email" placeholder="" class="form-control" maxlength="100">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Senha *</label>
+                    <input autocomplete="off" type="text" name="usu_senha" id="usu_senha" class="form-control" maxlength="10">
                   </div>
                 </div>
               </div>
@@ -47,7 +55,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <p class="text-right">
-                  <button type="submit" class="btn btn-space btn-primary" onclick="return validaCadAdministrador()">CADASTRAR</button>
+                  <button type="submit" class="btn btn-space btn-primary">CADASTRAR</button>
                 </p>
               </div>
             </div>

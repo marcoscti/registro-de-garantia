@@ -26,10 +26,16 @@ $mid01 = function ($request, $response, $next) {
         return $response->withRedirect('login');
     }
 };
-
+$mid02 = function($request, $response, $next){
+    if($_SESSION['logado']['usu_nivel_id'] == 1){
+        $response = $next($request, $response);
+        return $response;
+    }else {
+        return $response->withRedirect('admin');
+    }
+};
 #Rotas Públicas
 $app->get('/', MainController::class . ':home');
-
 $app->post('/', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     $files = $request->getUploadedFiles();
@@ -59,11 +65,10 @@ $app->get('/registro/{cpf}', function ($req, $res, $args) {
     $dompdf->loadHtml($newPdf);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    $dompdf->stream($data['usu_nome'] . ".pdf");
+    $dompdf->stream($data['usu_nome']."-".$data['usu_sobrenome']. ".pdf");
 });
 
 $app->get('/login', LoginController::class . ':viewLogin');
-
 $app->post('/login', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     if (LoginController::login($data)) {
@@ -72,13 +77,17 @@ $app->post('/login', function ($request, $response, $args) {
 });
 
 $app->get('/forgout', LoginController::class . ':forgoutView');
-
 $app->post('/forgout', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     LoginController::forgout($data);
     return $response->withRedirect('login');
 });
 
+$app->get('/logout', function ($request, $response, $args) {
+    session_start();
+    session_destroy();
+    return $response->withRedirect('/');
+});
 //A Função Abaixo serve para trazer as cidades para preencher o select da view insert garantia
 $app->post('/list', function ($request, $response, $args) {
     $data = $request->getParsedBody();
@@ -99,7 +108,6 @@ $app->post('/detalhe', function ($request, $response, $args) {
 })->add($mid01);
 
 $app->get('/profile', AdminController::class . ':mydata')->add($mid01);
-
 $app->post('/profile', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     AdminController::updateData($data);
@@ -107,7 +115,6 @@ $app->post('/profile', function ($request, $response, $args) {
 })->add($mid01);
 
 $app->get('/garantia', AdminController::class . ':viewInsertGarantia')->add($mid01);
-
 $app->post('/garantia', function ($request, $response, $args) {
     $data = $request->getParsedBody();
     $files = $request->getUploadedFiles();
@@ -126,11 +133,16 @@ $app->post('/garantia', function ($request, $response, $args) {
     return $response->withRedirect('garantia');
 })->add($mid01);
 
-$app->get('/logout', function ($request, $response, $args) {
-    session_start();
-    session_destroy();
-    return $response->withRedirect('/');
-});
+#Apenas Administradores acessam essa rotas
+$app->get('/novo-usuario', AdminController::class . ':viewAddUser')->add($mid02);
+
+$app->get('/list-all-users', AdminController::class . ':listAllUsers')->add($mid02);
+
+$app->post('/novo-usuario', function ($request, $response, $args) {
+    $data = $request->getParsedBody();
+    AdminController::insertUsuario($data);
+    return $response->withRedirect('admin');
+})->add($mid02);
 
 #Run application
 $app->run();

@@ -18,3 +18,6 @@
         </div> 
 -->
 <div class="be-splash-screen"><h1>Olá</h1></div>
+
+<?php
+print_r($_SESSION['logado']['usu_nivel_id']);

@@ -60,7 +60,7 @@ final class Pessoa
      */
     public function setUsuario($data)
     {
-        $sql = "";
+        $sql = "INSERT INTO tb_person (usu_nivel_id,usu_nome,usu_sobrenome,usu_email,usu_senha) VALUES(?,?,?,?,?)";
         return Sql::setData($sql, $data);
     }
     /**
@@ -76,13 +76,22 @@ final class Pessoa
      * @param $data
      * @return array
      */
-    public function getList(array $data)
+    public function getList($data)
     {
         $sql = "SELECT * FROM tb_person 
         INNER JOIN tb_city ON tb_city.id_city = tb_person.usu_cidade_id
         INNER JOIN tb_uf ON tb_uf.uf_id = tb_person.usu_uf_id
         WHERE usu_nivel_id = ? AND usu_status_id = ? AND usu_rev_id =?";
         return Sql::findData($sql, $data);
+    }
+    public function getListAll()
+    {
+        $sql = "SELECT * FROM tb_person 
+        INNER JOIN tb_city ON tb_city.id_city = tb_person.usu_cidade_id
+        INNER JOIN tb_uf ON tb_uf.uf_id = tb_person.usu_uf_id
+        INNER JOIN tb_usu_nivel ON tb_usu_nivel.usu_nivel_id = tb_person.usu_nivel_id
+        ";
+        return Sql::getList($sql);
     }
     /**
      * Verifica se o email já existe e retorna verdadeiro

@@ -12,7 +12,7 @@
 - [x] Conferir Validações nos controladores
 - [x] Gerar PDF dos registros
 ## Funções do Administrador
-- [ ] Manter Revendedor
+- [x] Manter Revendedor
 - [x] Manter Registro
 ## Funções do Revendedor
 - [x] Manter Registro

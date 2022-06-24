@@ -58,7 +58,7 @@ final class AdminController
     public static function getRegistros()
     {
 
-        $title = "Meus dados";
+        $title = "Registros";
         $pessoa = new Pessoa();
         $id = $_SESSION['logado']['usu_id'];
         $cliente = $pessoa->getList([3, 1, $id]);
@@ -66,6 +66,19 @@ final class AdminController
         include_once "./public/layout/nav_superior.php";
         include_once "./public/layout/nav_left.php";
         include_once "./public/view_admin_list_garantia.php";
+        include_once "./public/layout/footer.php";
+    }
+    public static function listAllUsers()
+    {
+
+        $title = "Usuarios Cadastrados";
+        $pessoa = new Pessoa();
+        $id = $_SESSION['logado']['usu_id'];
+        $cliente = $pessoa->getListAll();
+        include_once "./public/layout/header.php";
+        include_once "./public/layout/nav_superior.php";
+        include_once "./public/layout/nav_left.php";
+        include_once "./public/view_admin_list_all_users.php";
         include_once "./public/layout/footer.php";
     }
     public static function updateData($data)
@@ -100,10 +113,11 @@ final class AdminController
     public static function insertUsuario($data)
     {
         $usuario = [
-            $data['usuNivel_usuNivel_id'],
+            $data['usu_nivel_id'],
             $data['usu_nome'],
             $data['usu_sobrenome'],
-            $data['usu_email']
+            $data['usu_email'],
+            $data['usu_senha']
         ];
         $p = new Pessoa();
         return $p->setUsuario($usuario);

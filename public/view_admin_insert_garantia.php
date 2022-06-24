@@ -19,13 +19,13 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="cli_nome">Nome do cliente</label>
-                  <input autocomplete="on" id="cli_nome" name="cli_nome" type="text" maxlength="30" placeholder="Nome do cliente" class="form-control">
+                  <input autocomplete="on" id="cli_nome" name="cli_nome" type="text" maxlength="30" placeholder="Nome do cliente" class="form-control" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="cli_sobrenome">Sobrenome</label>
-                  <input autocomplete="on" id="cli_sobrenome" name="cli_sobrenome" type="text" maxlength="100" placeholder="Sobrenome" class="form-control">
+                  <input autocomplete="on" id="cli_sobrenome" name="cli_sobrenome" type="text" maxlength="100" placeholder="Sobrenome" class="form-control" required>
                 </div>
               </div>
             </div>
@@ -33,13 +33,13 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="cli_cpf">CPF do Cliente</label>
-                  <input oninput="vCPF(this)" autocomplete="on" type="text" name="cli_cpf" id="cli_cpf" placeholder="CPF" class="form-control" maxlength="11">
+                  <input oninput="vCPF(this)" autocomplete="on" type="text" name="cli_cpf" id="cli_cpf" placeholder="CPF" class="form-control" maxlength="11"  required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="cli_email">E-mail do cliente</label>
-                  <input autocomplete="on" type="email" name="cli_email" id="cli_email" placeholder="Seu email" class="form-control" maxlength="100">
+                  <input autocomplete="on" type="email" name="cli_email" id="cli_email" placeholder="Seu email" class="form-control" maxlength="100"  required>
                 </div>
               </div>
             </div>
@@ -69,13 +69,13 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="cli_data_compra">Data da compra </label>
-                  <input autocomplete="on" type="date" name="cli_data_compra" id="cli_data_compra" title="Data da Compra" class="form-control" maxlength="10">
+                  <input autocomplete="on" type="date" name="cli_data_compra" id="cli_data_compra" title="Data da Compra" class="form-control" maxlength="10" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="cli_foto_nf">Foto da nota fiscal</label>
-                  <input type="file" name="cli_foto_nf" id="cli_foto_nf" title="Clique para anexar uma imagem da nota fiscal" class="form-control">
+                  <input type="file" name="cli_foto_nf" id="cli_foto_nf" title="Clique para anexar uma imagem da nota fiscal" class="form-control" required>
                 </div>
               </div>
             </div>
@@ -85,13 +85,13 @@
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label for="cli_ddd">DDD</label>
-                      <input autocomplete="on" type="text" name="cli_ddd" id="cli_ddd" placeholder="DDD" class="form-control" maxlength="2">
+                      <input autocomplete="on" type="text" name="cli_ddd" id="cli_ddd" placeholder="DDD" class="form-control" maxlength="2" required>
                     </div>
                   </div>
                   <div class="col-sm-8">
                     <div class="form-group">
                       <label for="cli_tel">Telefone</label>
-                      <input autocomplete="on" type="text" name="cli_tel" id="cli_tel" placeholder="Telefone (Apenas nº)" class="form-control" maxlength="9">
+                      <input autocomplete="on" type="text" name="cli_tel" id="cli_tel" placeholder="Telefone (Apenas nº)" class="form-control" maxlength="9" required>
                     </div>
                   </div>
                 </div>
@@ -102,13 +102,13 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="cli_num_nf">Nº da Nota Fiscal</label>
-                      <input autocomplete="on" type="number" name="cli_num_nf" id="cli_num_nf" placeholder="EX: 0540..." class="form-control" maxlength="15">
+                      <input autocomplete="on" type="number" name="cli_num_nf" id="cli_num_nf" placeholder="EX: 0540..." class="form-control" maxlength="15" required>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="cli_ref_rel">Referência Relógio</label>
-                      <input oninput="handleInput(event)" autocomplete="on" type="text" name="cli_ref_rel" id="cli_ref_rel" placeholder="EX: 01XBC2" class="form-control" maxlength="20">
+                      <input oninput="handleInput(event)" autocomplete="on" type="text" name="cli_ref_rel" id="cli_ref_rel" placeholder="EX: 01XBC2" class="form-control" maxlength="20" required>
                     </div>
                   </div>
                 </div>
